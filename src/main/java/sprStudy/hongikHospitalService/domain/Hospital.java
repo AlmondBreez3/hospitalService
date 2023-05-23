@@ -12,18 +12,15 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "doctor")
-public class Doctor {
-
+public class Hospital {
     @Id
     @GeneratedValue
     private Long id;
 
     private String name;
-    private Long career;
+    private String address;
 
-    //진료과 다대1
-    @OneToMany(mappedBy = "doctor")
-    private List<Department> departments= new ArrayList<>();
-
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name="department_id")
+    private List<Department> departments =new ArrayList<>();
 }
