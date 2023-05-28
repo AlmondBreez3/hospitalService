@@ -23,7 +23,8 @@ public class Doctor {
     private Long career;
 
     //진료과 다대1
-    @OneToMany(mappedBy = "doctor")
-    private List<Department> departments= new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="department_id")
+    private Department department;
 
 }

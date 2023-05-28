@@ -5,6 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.print.Doc;
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -22,7 +26,7 @@ public class Department {
     @JoinColumn(name = "HOSPITAL_ID")
     private Hospital hospital;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Doctor doctor;
+    @OneToMany(mappedBy="DEPARTMENT_ID")
+    private List<Doctor> doctorList =new ArrayList<>();
 
 }
